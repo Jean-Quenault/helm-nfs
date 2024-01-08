@@ -7,13 +7,13 @@ metadata:
   annotations:
     {{- toYaml .Values.service.annotations | nindent 4 }}
 spec:
-  type: {{ $service.type }}
+  type: LoadBalancer
   ports:
     {{- range .Values.service.ports }}
     - name: {{ .name }}
       port: {{ .port }}
       targetPort: {{ .targetPort }}
-      {{- if eq $service.type "NodePort" }}
+      {{- if eq "LoadBalancer" "NodePort" }}
       nodePort: {{ .nodePort }}
       {{- end }}
     {{- end }}
