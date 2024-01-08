@@ -20,10 +20,9 @@ service:
       targetPort: 21010
 
 environment:
-  - name: USERS
-    value: "one|1234"
-  - name: ADDRESS
-    value: "ftp.site.domain"
+  USERS: "one|1234"
+  ADDRESS: "ftp.site.domain"
+
 
 persistence:
   enabled: true
