@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ftp-server.fullname" . }}
+  labels:
+    {{- include "ftp-server.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "ftp-server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "ftp-server.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: ftp
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 21
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: ftp-storage
+              mountPath: /home/user
+      volumes:
+        - name: ftp-storage
+          persistentVolumeClaim:
+            claimName: efs-pvc
+      

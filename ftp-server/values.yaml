@@ -1,0 +1,12 @@
+replicaCount: 2
+
+image:
+  repository: garethflowers/ftp-server
+  pullPolicy: IfNotPresent
+  tag: latest
+
+service:
+  type: ClusterIP
+  port: 21
+
+resources: {}
