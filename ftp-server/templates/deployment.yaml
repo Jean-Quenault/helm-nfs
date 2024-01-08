@@ -20,6 +20,13 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 21
+            - containerPort: 21000
+            - containerPort: 21010
+          env:
+            - name: USERS
+              value: "{{ .Values.environment.USERS }}"
+            - name: ADDRESS
+              value: "{{ .Values.environment.ADDRESS }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
@@ -28,5 +35,4 @@ spec:
       volumes:
         - name: ftp-storage
           persistentVolumeClaim:
-            claimName: efs-pvc
-      
+            claimName: {{ .Values.persistence.existingClaim }}

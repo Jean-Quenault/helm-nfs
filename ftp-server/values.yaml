@@ -1,12 +1,34 @@
-replicaCount: 2
+replicaCount: 1
 
 image:
-  repository: garethflowers/ftp-server
+  repository: delfer/alpine-ftp-server
   pullPolicy: IfNotPresent
-  tag: latest
 
 service:
-  type: ClusterIP
-  port: 21
+  type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb" 
+  ports:
+    - name: ftp
+      port: 21
+      targetPort: 21
+    - name: passive
+      port: 21000
+      targetPort: 21000
+    - name: passive-last
+      port: 21010
+      targetPort: 21010
 
-resources: {}
+environment:
+  - name: USERS
+    value: "one|1234"
+  - name: ADDRESS
+    value: "ftp.site.domain"
+
+persistence:
+  enabled: true
+  accessModes:
+    - ReadWriteMany
+  size: 10Gi
+  storageClassName: "efs-sc"
+  existingClaim: ""
