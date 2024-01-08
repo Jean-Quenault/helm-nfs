@@ -20,7 +20,7 @@ service:
       targetPort: 21010
 
 environment:
-  USERS: "one|1234"
+  USERS: "jeanadmin|12345jean"
   ADDRESS: "ftp.site.domain"
 
 
