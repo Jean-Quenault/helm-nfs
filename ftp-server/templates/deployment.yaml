@@ -29,10 +29,10 @@ spec:
               value: "{{ .Values.environment.ADDRESS }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-            - name: ftp-storage
-              mountPath: /home/user
-      volumes:
-        - name: ftp-storage
-          persistentVolumeClaim:
-            claimName: efs-pvc
+          #volumeMounts:
+            #- name: ftp-storage
+              #mountPath: /home/user
+      #volumes:
+        #- name: ftp-storage
+          #persistentVolumeClaim:
+            #claimName: efs-pvc

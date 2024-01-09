@@ -24,10 +24,10 @@ environment:
   ADDRESS: "ftp.site.domain"
 
 
-persistence:
-  enabled: true
-  accessModes:
-    - ReadWriteMany
-  size: 5Gi
-  storageClassName: "efs-sc"
-  existingClaim: "efs-pvc"
+#persistence:
+#  enabled: true
+#  accessModes:
+#    - ReadWriteMany
+#  size: 5Gi
+#  storageClassName: "efs-sc"
+#  existingClaim: "efs-pvc"
