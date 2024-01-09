@@ -21,8 +21,8 @@ service:
       targetPort: 21010
 
 environment:
-  USERS: "jeanadmin|12345jean"
-  ADDRESS: "ftp.site.domain"
+  USERS: jeanadmin|12345jean
+  ADDRESS: ftp.site.domain
 
 
 #persistence:
