@@ -35,4 +35,4 @@ spec:
       volumes:
         - name: ftp-storage
           persistentVolumeClaim:
-            claimName: {{ .Values.persistence.existingClaim }}
+            claimName: efs-pvc
