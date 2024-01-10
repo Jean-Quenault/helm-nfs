@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: helm-nfs
+  name: helm-ftp
   region: eu-west-3
 
 nodeGroups:
