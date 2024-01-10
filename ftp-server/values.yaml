@@ -22,7 +22,7 @@ service:
 
 environment:
   USERS: jeanadmin|12345jean
-  ADDRESS: http://ftp.jeanops.net
+  ADDRESS: ftp.jeanops.net
 
 
 #persistence:
