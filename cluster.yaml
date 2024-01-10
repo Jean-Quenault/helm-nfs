@@ -8,4 +8,6 @@ metadata:
 nodeGroups:
   - name: node-group-1
     instanceType: t2.micro
-    desiredCapacity: 6
+    desiredCapacity: 3
+    minSize: 2
+    maxSize: 4
